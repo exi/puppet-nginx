@@ -8,6 +8,9 @@
 <% if @location_cfg_prepend -%><% @location_cfg_prepend.sort_by {|k,v| k}.each do |key,value| -%>
     <%= key %> <%= value %>;
 <% end -%><% end -%>
+<% if defined? @rewrites -%><% @rewrites.each do |rew| -%>
+    rewrite <%= rew %>;
+<% end -%><% end -%>
 <% if defined? @www_root -%>
     root  <%= @www_root %>;
 <% end -%>
