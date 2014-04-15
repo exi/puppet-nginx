@@ -229,8 +229,8 @@ define nginx::resource::vhost (
 
   if $fastcgi != undef and !defined(File['/etc/nginx/fastcgi_params']) {
     file { '/etc/nginx/fastcgi_params':
+      owner  => $nginx::params::nx_daemon_user,
       ensure  => present,
-      mode    => '0770',
       content => template('nginx/vhost/fastcgi_params.erb'),
     }
   }
